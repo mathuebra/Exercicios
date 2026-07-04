@@ -8,11 +8,18 @@ public class Solution {
         {
             int complement = target - nums[i];
 
+
             if (map.ContainsKey(complement))
                 return [map[complement], i];
 
-            else map.Add(nums[i], i);
+            
+            if (!map.ContainsKey(nums[i]))
+            {
+                map.Add(nums[i], i);
+            }
 
         }
+
+        return Array.Empty<int>();
     }
 }

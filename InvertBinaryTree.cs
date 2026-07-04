@@ -17,10 +17,14 @@ public class Solution {
     public TreeNode InvertTree(TreeNode root) {
         if (root == null) return null;
 
-        TreeNode left = InvertTree(root.left);
-        TreeNode right = InvertTree(root.right);
+        // salva os filhos originais ANTES de mexer neles
+        TreeNode originalLeft = root.left;
+        TreeNode originalRight = root.right;
 
-        root.left = root.right;
-        root.right = root.left;
+        // inverte recursivamente as subárvores
+        root.left = InvertTree(originalRight);
+        root.right = InvertTree(originalLeft);
+
+        return root;
     }
 }
