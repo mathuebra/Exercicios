@@ -1,4 +1,5 @@
 using System;
+using System.Text.RegularExpressions;
 
 /*
 Given a string s and a dictionary of strings wordDict, return true if s can be 
@@ -9,6 +10,21 @@ Note that the same word in the dictionary may be reused multiple times in the se
 
 public class Solution {
     public bool WordBreak(string s, IList<string> wordDict) {
+
+        bool Matches(int start, string word)
+        {
+            if (start + word.Length > s.Length)
+                return false;
+
+            for (int i = 0; i < word.Length; i++)
+            {
+                if (s[start + i] != word[i])
+                    return false;
+            }
+
+            return true;
+        }
+
         bool canBreak(int start)
         {
             if (start == s.Length)
@@ -16,7 +32,7 @@ public class Solution {
             
             foreach (string word in wordDict)
             {
-                if (s.StartsWith(word, start))
+                if (Matches(start, word))
                 {
                     if (canBreak(start + word.Length))
                         return true;
