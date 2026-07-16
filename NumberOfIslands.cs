@@ -27,12 +27,10 @@ public class Solution {
         {
             grid[i][j] = '0';
 
-            dfs(i-1, j); // cima
-            dfs(i+1, j); // baixo
-            dfs(i, j-1); // esquerda
-            dfs(i, j+1); // direita
+            dfs(grid, i-1, j); // cima
+            dfs(grid, i+1, j); // baixo
+            dfs(grid, i, j-1); // esquerda
+            dfs(grid, i, j+1); // direita
         }
-
-
     }
 }

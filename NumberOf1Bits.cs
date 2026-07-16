@@ -1,37 +1,20 @@
 using System;
 
 public class Solution {
-    public int HammingWeight(int n) {
-        string str = ConvertToBinary(n);
+    public int HammingWeight(int n)
+    {
         int count = 0;
 
-        if (n == 0) return 0;
-
-        foreach (char c in str)
+        while (n != 0)
         {
-            if (c == '1')
+            if ((n & 1) == 1)
                 count ++;
+
+            n = n >> 1;
         }
 
         return count;
-    }
 
-    string ConvertToBinary(int n)
-    {
-        string s = "";
-
-        while (n > 0)
-        {
-            if (n % 2 == 1) s += "1";
-            else s += "0";
-
-            n = n/2;
-        }
-
-        char[] temp = s.ToCharArray();
-        Array.Reverse(temp);
-
-        return new string(temp);
     }
 }
 

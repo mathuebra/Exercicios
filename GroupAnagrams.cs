@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics.Contracts;
 
 public class Solution {
     public IList<IList<string>> GroupAnagrams(string[] strs) {
